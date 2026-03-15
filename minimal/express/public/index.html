@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minimal Express App</title>
+</head>
+<body>
+  <h1>Minimal Express App</h1>
+  <input id="max" type="number" value="100">
+  <button onclick="getRandom()">Get Random</button>
+  <p id="result">nombre : ?</p>
+
+  <script>
+    function getRandom() {
+      const max = document.getElementById("max").value;
+      fetch("/random?max=" + max)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("result").innerText = "nombre : " + data.number;
+        });
+    }
+  </script>
+</body>
+</html>
